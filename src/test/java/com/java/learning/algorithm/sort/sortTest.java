@@ -18,6 +18,8 @@ public class sortTest {
     SelectionSort selectionSort;
     @Autowired
     InsertionSort insertionSort;
+    @Autowired
+    ShellSort shellSort;
     @Test
     public void   bubbleSort(){
         Integer[] arr=ArrayFactory.getIntArray();
@@ -38,6 +40,14 @@ public class sortTest {
         Integer[] arr=ArrayFactory.getIntArray();
         System.out.println("befor:"+ Arrays.toString(arr));
         arr= (Integer[]) insertionSort.sort(arr,"ascending");
+        System.out.println("after:"+Arrays.toString(arr));
+    }
+
+    @Test
+    public void shellSort(){
+        Integer[] arr=ArrayFactory.getIntArray();
+        System.out.println("befor:"+ Arrays.toString(arr));
+        arr= (Integer[]) shellSort.sort(arr,"ascending");
         System.out.println("after:"+Arrays.toString(arr));
     }
 }

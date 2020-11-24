@@ -9,40 +9,52 @@ import org.springframework.stereotype.Component;
 @Component
 public class InsertionSort<T extends Comparable<T>> extends BaseSort<T> implements SortInterface<T> {
 
-
-
     @Override
     public T[] sort(T[] array, String sortType) {
-        T[] resultArray = (T[]) new Object[array.length];
-        for(int i=0;i<array.length;i++){
-            addBySort(resultArray,array,array[i],sortType);
+        //todo
+        T[] resultArray = (T[]) new Comparable[array.length];
+        for (int i = 0; i < array.length; i++) {
+            addBySort(resultArray, i, array[i], sortType);
         }
         return resultArray;
     }
 
-    private void addBySort(T[] newArray,T[] arr, T element, String sortType) {
-        for (int i = 0; i < arr.length; i++) {
+    public T[] sort(T[] array, String sortType, int gap, T[] resultArray) {
+        //todo
+        for (int i = 0; i * gap < array.length; i++) {
+            addBySort(resultArray, i, array[i * gap], sortType, gap);
+        }
+        return resultArray;
+    }
+
+    private void addBySort(T[] newArray, int loopCount, T element, String sortType) {
+        //在头的情况
+        if (!compare(newArray, 0, element, sortType)) {
+            add(newArray, 0, element);
+            return;
+        }
+        //在中间的情况
+        for (int i = 0; i < loopCount; i++) {
             //这就证明了新元素应该插入在i跟i+1中间
-            if (compare(arr, i, element, sortType) && !compare(arr, i + 1, element, sortType)) {
+            if (compare(newArray, i, element, sortType) && !compare(newArray, i + 1, element, sortType)) {
                 add(newArray, i + 1, element);
             }
         }
     }
 
-    private void add(T[] arr, int index, T element) {
-        //最后一位必须是空的，否则无法插入
-        if (arr[arr.length - 1] != null && index != arr.length - 1) {
-            throw new RuntimeException("如果要插入新元素，数组最后一位必须为空！");
+    private void addBySort(T[] newArray, int loopCount, T element, String sortType, int gap) {
+        //在头的情况
+        if (!compare(newArray, 0, element, sortType)) {
+            add(newArray, 0, element, gap);
+            return;
         }
-        if (index != arr.length - 1) {
-            for (int i = arr.length - 2; i >= index; i--) {
-                //所有元素后挪一位
-                if (arr[i] != null) {
-                    arr[i + 1] = arr[i];
-                }
+        //在中间的情况
+        for (int i = 0; i < loopCount; i++) {
+            //这就证明了新元素应该插入在i跟i+1中间
+            if (compare(newArray, i * gap, element, sortType) && !compare(newArray, (i + 1) * gap, element, sortType)) {
+                add(newArray, (i + 1) * gap, element, gap);
             }
         }
-
-        arr[index] = element;
     }
+
 }
