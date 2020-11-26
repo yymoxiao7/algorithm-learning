@@ -46,6 +46,30 @@ public abstract class BaseSort<T extends Comparable<T>> {
         );
     }
 
+    public boolean compareCanEqual(T[] array, int i, T t, String sortType) {
+        //如果是升序，那么arr[i]<arr[i+1],如果是降序，那么arr[i]>arr[i+1]
+        return array[i] != null &&
+                (array[i].compareTo(t) == 0 ||
+                        (
+                (sortType.equals(ASCENDING_ORDER) && array[i].compareTo(t) < 0) ||
+                        (sortType.equals(DESCENDING_ORDER) && array[i].compareTo(t) > 0)
+
+                        )
+                );
+    }
+
+    public boolean compareCanNotEqual(T[] array, int i, T t, String sortType) {
+        //如果是升序，那么arr[i]<arr[i+1],如果是降序，那么arr[i]>arr[i+1]
+        return array[i] != null &&
+                (array[i].compareTo(t) != 0 ||
+                        (
+                                (sortType.equals(ASCENDING_ORDER) && array[i].compareTo(t) < 0) ||
+                                        (sortType.equals(DESCENDING_ORDER) && array[i].compareTo(t) > 0)
+
+                        )
+                );
+    }
+
     public void add(T[] arr, int index, T element) {
         //最后一位必须是空的，否则无法插入
         if (arr[arr.length - 1] != null && index != arr.length - 1) {
@@ -69,7 +93,7 @@ public abstract class BaseSort<T extends Comparable<T>> {
             throw new RuntimeException("如果要插入新元素，数组最后一位必须为空！");
         }
         if (index != arr.length - gap) {
-            for (int i = arr.length  - gap; i >= index; i = i - gap) {
+            for (int i = arr.length - gap; i >= index; i = i - gap) {
                 //所有元素后挪gap位
                 if (arr[i] != null) {
                     arr[i + gap] = arr[i];

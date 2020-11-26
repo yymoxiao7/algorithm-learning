@@ -20,34 +20,71 @@ public class sortTest {
     InsertionSort insertionSort;
     @Autowired
     ShellSort shellSort;
+    @Autowired
+    ShellSortImprove shellSortImprove;
+    @Autowired
+    MergeSort mergeSort;
+    @Autowired
+    QuickSort quickSort;
+
     @Test
-    public void   bubbleSort(){
-        Integer[] arr=ArrayFactory.getIntArray();
-        System.out.println("befor:"+ Arrays.toString(arr));
-        arr= (Integer[]) bubbleSort.sort(arr,"ascending");
-        System.out.println("after:"+Arrays.toString(arr));
-    }
-    @Test
-    public void selectionSort(){
-        Integer[] arr=ArrayFactory.getIntArray();
-        System.out.println("befor:"+ Arrays.toString(arr));
-        arr= (Integer[]) selectionSort.sort(arr,"ascending");
-        System.out.println("after:"+Arrays.toString(arr));
+    public void bubbleSort() {
+        Integer[] arr = ArrayFactory.getIntArray();
+        System.out.println("befor:" + Arrays.toString(arr));
+        arr = (Integer[]) bubbleSort.sort(arr, "ascending");
+        System.out.println("after:" + Arrays.toString(arr));
     }
 
     @Test
-    public void insertionSort(){
-        Integer[] arr=ArrayFactory.getIntArray();
-        System.out.println("befor:"+ Arrays.toString(arr));
-        arr= (Integer[]) insertionSort.sort(arr,"ascending");
-        System.out.println("after:"+Arrays.toString(arr));
+    public void selectionSort() {
+        Integer[] arr = ArrayFactory.getIntArray();
+        System.out.println("befor:" + Arrays.toString(arr));
+        arr = (Integer[]) selectionSort.sort(arr, "ascending");
+        System.out.println("after:" + Arrays.toString(arr));
     }
 
     @Test
-    public void shellSort(){
-        Integer[] arr=ArrayFactory.getIntArray();
-        System.out.println("befor:"+ Arrays.toString(arr));
-        arr= (Integer[]) shellSort.sort(arr,"ascending");
-        System.out.println("after:"+Arrays.toString(arr));
+    public void insertionSort() {
+        Integer[] arr = ArrayFactory.getIntArray();
+        System.out.println("befor:" + Arrays.toString(arr));
+        arr = (Integer[]) insertionSort.sort(arr, "ascending");
+        System.out.println("after:" + Arrays.toString(arr));
+    }
+
+    @Test
+    public void shellSort() {
+        Integer[] arr = ArrayFactory.getIntArray();
+        System.out.println("befor:" + Arrays.toString(arr));
+        arr = (Integer[]) shellSort.sort(arr, "ascending");
+        System.out.println("after:" + Arrays.toString(arr));
+    }
+
+    @Test
+    public void shellSortImprove() {
+        Integer[] arr = ArrayFactory.getIntArray();
+        System.out.println("befor:" + Arrays.toString(arr));
+        arr = (Integer[]) shellSortImprove.sort(arr, "ascending");
+        System.out.println("after:" + Arrays.toString(arr));
+    }
+
+    @Test
+    public void MergeSort() {
+        Integer[] arr = ArrayFactory.getIntArray();
+        System.out.println("befor:" + Arrays.toString(arr));
+        mergeSort.sort(arr, "ascending");
+        System.out.println(Arrays.toString(arr));
+
+    }
+
+    @Test
+    public void QuickSort() {
+/*
+        Integer[] arr = ArrayFactory.getIntArray();
+*/
+        Integer[] arr = new Integer[]{8, 0, 3, 3, 4, 2, 3, 8, 5, 0};
+        System.out.println("befor:" + Arrays.toString(arr));
+        quickSort.sort(arr, "ascending");
+        System.out.println(Arrays.toString(arr));
+
     }
 }
