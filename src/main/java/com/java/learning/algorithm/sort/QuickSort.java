@@ -27,12 +27,13 @@ public class QuickSort<T extends Comparable<T>> extends BaseSort<T> implements S
         //i到pivotIndex 应该都比中间元素小 pivotIndex+1到end应该比她大
         while (sectionStart != sectionEnd) {
             //找出startIndex到endIndex区间第一个不符合跟element排序的
-            while (array[sectionStart].compareTo(element) <= 0 && sectionStart < sectionEnd) {
-                sectionStart++;
-            }
             while (array[sectionEnd].compareTo(element) >= 0 && sectionStart < sectionEnd) {
                 sectionEnd--;
             }
+            while (array[sectionStart].compareTo(element) <= 0 && sectionStart < sectionEnd) {
+                sectionStart++;
+            }
+
             if (sectionStart < sectionEnd) {
                 //交换最大最小的位置
                 swap(array, sectionStart, sectionEnd);

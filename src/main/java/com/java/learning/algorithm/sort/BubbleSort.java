@@ -26,7 +26,7 @@ public class BubbleSort<T extends Comparable<T>> extends BaseSort<T> implements 
 
         for (int i = 0; i < length; i++) {
             //里层
-            for (int j = 0; j < length - 1; j++) {
+            for (int j = 0; j < length -1; j++) {
                 if (!compare(array, j, sortType)) {
                     swap(array, j, j + 1);
                 }
