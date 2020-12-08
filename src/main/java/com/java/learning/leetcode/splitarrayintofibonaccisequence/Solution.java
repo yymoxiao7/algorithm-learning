@@ -25,7 +25,7 @@ public class Solution {
         char[] charArray = S.toCharArray();
         Stack<Character> stack = new Stack<>();
         //int最大长度
-        int maxLength = charArray.length / 2;
+        int maxLength = Math.min(charArray.length / 2, 10);
 
         for (int i = maxLength; i > 0; i--) {
             //如果没找到对应的斐波那契list就给stack重新赋值
@@ -64,8 +64,7 @@ public class Solution {
                 if (first == -1 || second == -1) {
                     if (first == -1 && second != -1) pushNumberIntoStack(stack, second);
                     if (first != -1 && second == -1) pushNumberIntoStack(stack, first);
-
-                    break;
+                    continue;
                 }
 
                 if (stack.size() == 0 && last == (first + second)) {
@@ -130,6 +129,7 @@ public class Solution {
             return -1;
         }
         //因为上面算法当length=1时多加了个1
+        //todo 整型溢出判断 
         return Integer.parseInt(new String(chars));
     }
 
