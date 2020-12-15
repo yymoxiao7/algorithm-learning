@@ -130,7 +130,12 @@ public class Solution {
         }
         //因为上面算法当length=1时多加了个1
         //todo 整型溢出判断 
-        return Integer.parseInt(new String(chars));
+       try{
+           return Integer.parseInt(new String(chars));
+       }catch (IllegalArgumentException e){
+           pushNumberIntoStack(stack, chars);
+           return -1;
+       }
     }
 
     private void getStack(char[] charArray, Stack<Character> stack) {
